@@ -1,0 +1,2082 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pandal Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e53935, #f57c00);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        nav {
+            background: linear-gradient(90deg, #ff5722, #e91e63, #9c27b0);
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffeb3b;
+            box-shadow: 0 0 10px #fff;
+        }
+
+        /* Hamburger */
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                position: absolute;
+                top: 65px;
+                left: -100%;
+                width: 100%;
+                background: linear-gradient(180deg, #e91e63, #9c27b0);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                transition: all 0.3s ease-in-out;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            background: #fff6f5;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #d32f2f;
+            color: white;
+            font-size: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9e2df;
+        }
+
+        tr:hover {
+            background-color: #ffe0b2;
+        }
+
+        a {
+            color: #f57c00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            table {
+                font-size: 14px;
+            }
+
+            th,
+            td {
+                padding: 8px;
+            }
+        }
+
+        footer {
+            background-color: #7b1c1c;
+            /* deep red */
+            color: white;
+            padding: 40px 20px 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            max-width: 1600px;
+            margin: auto;
+        }
+
+        .footer-logo h2 {
+            color: #ffcc00;
+            margin: 0;
+        }
+
+        .footer-logo p {
+            font-size: 14px;
+            margin: 10px 0;
+            color: #ddd;
+        }
+
+        .footer-social a {
+            display: inline-block;
+            margin-right: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover {
+            color: #ffcc00;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #ddd;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ffcc00;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #aaa;
+            margin-top: 20px;
+            padding-top: 15px;
+            font-size: 13px;
+            color: #ddd;
+        }
+
+        .footer-contact p {
+            margin: 6px 0;
+            font-size: 0.95rem;
+            color: #ddd;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .footer-container {
+                text-align: center;
+            }
+        }
+
+        .footer-brand-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            padding: 14px 10px;
+            margin: 12px 0 18px;
+            background: #0f172a0d;
+            border-radius: 16px;
+        }
+
+        .footer-brand-logos .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 14px;
+            background: #fff;
+            color: #111827;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+            transition: transform .15s ease, box-shadow .15s ease;
+        }
+
+        .footer-brand-logos .logo svg {
+            flex-shrink: 0;
+        }
+
+        .footer-brand-logos .logo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, .15);
+        }
+
+        @media (max-width: 520px) {
+            .footer-brand-logos {
+                gap: 10px;
+            }
+
+            .footer-brand-logos .logo {
+                font-size: 13px;
+                padding: 9px 12px;
+            }
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 2000px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .mySlides {
+            display: none;
+            position: relative;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0.4;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: 90vh;
+            object-fit: cover;
+        }
+
+        /* Caption */
+        .caption {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        .caption h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+            animation: slideUp 1s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #ff5722;
+            color: white;
+            font-size: 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            /* background: #e64a19; */
+            transform: scale(1.07);
+        }
+
+        /* Prev/Next buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            padding: 14px;
+            margin-top: -22px;
+            color: white;
+            font-size: 24px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+            user-select: none;
+            transition: 0.3s;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Dots */
+        .dots {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 14px;
+            width: 14px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active,
+        .dot:hover {
+            background-color: #ff5722;
+        }
+
+        /* About Section */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .content h1 {
+            font-size: 2.5rem;
+            color: #f78914;
+            margin-bottom: 15px;
+        }
+
+        .content p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn1 {
+            padding: 10px 20px;
+            background-color: #f0c14b;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn1:hover {
+            background-color: #d89b31;
+        }
+
+        .image-container {
+            flex: 1;
+            text-align: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .caption h2 {
+                font-size: 1.6rem;
+            }
+
+            .btn {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            .mySlides img {
+                height: 60vh;
+            }
+
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .tags {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">Durga Puja 2025</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="most visit.html">Most Visit</a></li>
+            <li><a href="ranking pandals.html">Ranking Pandals</a></li>
+            <li><a href="Pujo zone.html">Pujo Zone</a></li>
+            <li><a href="Thank you.html">Contribution</a></li>
+        </ul>
+        <div class="menu-toggle">&#9776;</div>
+    </nav>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="home.jpg" alt="Durga Puja">
+            <div class="caption">
+                <h2>Welcome to Durga Puja 2025 🌸</h2>
+                <a href="most visit.html" class="btn">Join Puja</a>
+            </div>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="home3.jpg" alt="Pandal">
+            <div class="caption">
+                <h2>Experience Tradition & Culture ✨</h2>
+                <a href="ranking pandals.html" class="btn">Explore Pandals</a>
+            </div>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="home2.jpg" alt="Festival">
+            <div class="caption">
+                <h2>Celebrate with Joy & Devotion 🎉</h2>
+                <a href="story.html" class="btn">Story About Durga Puja</a>
+            </div>
+        </div>
+        <div class="mySlides fade">
+            <img src="gallary8.jpg" alt="Festival">
+            <div class="caption">
+                <h2>Discover The Durga Puja Gallary 🎉</h2>
+                <a href="gallary.html" class="btn">Durga Puja Gallary</a>
+            </div>
+        </div>
+        <div class="mySlides fade">
+            <img src="home11.jpg" alt="Festival">
+            <div class="caption">
+                <h2>Discover The North Kolkata Pandals 🎉</h2>
+                <a href="north kolkata pujo.html" class="btn">North Kolkata</a>
+            </div>
+        </div>
+        <div class="mySlides fade">
+            <img src="home12.jpg" alt="Festival">
+            <div class="caption">
+                <h2>Discover The South Kolkata Pandals 🎉</h2>
+                <a href="south kolkata pujo.html" class="btn">South Kolkata</a>
+            </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+
+    <!-- Dots -->
+    <div class="dots">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+    </div>
+    <script> // Mobile menu toggle
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector("nav ul");
+
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+
+        // Slideshow
+        let slideIndex = 0;
+        let slideTimer;
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            slideIndex++;
+
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }
+
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+
+            slideTimer = setTimeout(showSlides, 5000);
+        }
+
+        function plusSlides(n) {
+            clearTimeout(slideTimer);
+            slideIndex += n - 1;
+            showSlides();
+        }
+
+        function currentSlide(n) {
+            clearTimeout(slideTimer);
+            slideIndex = n;
+            showSlides();
+        }
+
+        showSlides();
+    </script>
+
+
+    <h1>Durga Puja Pandal Guide</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Pandal Name</th>
+                    <th>Location</th>
+                    <th>Theme</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Bagbazar Sarbajanin</td>
+                    <td><a href="https://maps.app.goo.gl/MfyjnghXYj1c12jb6">Google Map</a></td>
+                    <td>Traditional</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Kumartuli Park</td>
+                    <td><a href="https://maps.app.goo.gl/ErwrtEp3U4SLFTUq8">Google Map</a></td>
+                    <td>Potrosova</td>
+
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>College Square</td>
+                    <td><a href="https://maps.app.goo.gl/R4sHoEPKqXqXHF1y8">Google Map</a></td>
+                    <td>cambodia angkor wat temple</td>
+
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Santosh Mitra Square</td>
+                    <td><a href="https://maps.app.goo.gl/4FgEUo8bPMttcuCz5">Google Map</a></td>
+                    <td> Operation Sindoor - immersive LED & 3D visuals</td>
+
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td> Sreebhumi Sporting Club</td>
+                    <td><a href="https://maps.app.goo.gl/xQsQANsVeHdDGa7v5">Google Map</a></td>
+                    <td>America iscon temple</td>
+
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Kalyani ITI More</td>
+                    <td><a href="https://maps.app.goo.gl/hGcjMUx8tUgoCCPU6">Google Map</a></td>
+                    <td>Hsinbyume Pagoda,Myanmar</td>
+
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Dumdum Park Tarun Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/vWxbgBer4Mxe5jWB8">Google Map</a></td>
+                    <td>Satyannbeshi</td>
+
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Sovabazar Rajbari</td>
+                    <td><a href="https://maps.app.goo.gl/TWAoFAjuXdwLZ5QX9">Google Map</a></td>
+                    <td>Traditional</td>
+
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Ekdalia Evergreen Club</td>
+                    <td><a href="https://maps.app.goo.gl/37gNBkeEir3FJBHZ6">Google Map</a></td>
+                    <td>Tamilnadu Arunachalaswar temple</td>
+
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Salt Lake AK Block</td>
+                    <td><a href="https://maps.app.goo.gl/VprsUtcmebfEnBiT8">Google Map</a></td>
+                    <td>যুক্তি তক্ক</td>
+
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>Garihat Hindustan club</td>
+                    <td><a href="https://maps.app.goo.gl/z3RPU59GNBqpJBEX8">Google Map</a></td>
+                    <td>চেতনায় রঙ্গিন আল্পনা</td>
+
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>Hindustan park</td>
+                    <td><a href="https://maps.app.goo.gl/QNPeVB8sjBZErRL17">Google Map</a></td>
+                    <td>লোকজ</td>
+
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>Jogot Mukharjee park</td>
+                    <td><a href="https://maps.app.goo.gl/x1msStsVt4HHJw2h7">Google Map</a></td>
+                    <td>AI আশীর্বাদ না অভিশাপ</td>
+
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>Tala prattoy</td>
+                    <td><a href="https://maps.app.goo.gl/Ekpb32JuvD69YRQS7">Google Map</a></td>
+                    <td>বিজগানিত</td>
+
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>Baliganj cultural association</td>
+                    <td><a href="https://maps.app.goo.gl/LGgi6AvqgRR9NuLr7">Google Map</a></td>
+                    <td>প্রথা</td>
+
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>Ranaghat Kamalpur Avijan Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/8oy2WA62QtWwnvUx9">Google Map</a></td>
+                    <td>The world's Largest Durga</td>
+
+                </tr>
+
+                <tr>
+                    <td>17</td>
+                    <td>Manicktala Chaltabagan Lohapatty</td>
+                    <td><a href="https://maps.app.goo.gl/82WZBXXcEmJkzV6X8">Google Map</a></td>
+                    <td>বাংলা ও বাঙালি</td>
+
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>Naktala Udayan Sangha </td>
+                    <td><a href="https://maps.app.goo.gl/eqnopPY8hyPLsZTd8">Google Map</a></td>
+                    <td>অর্পণ</td>
+
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>Dum Dum Park Varat Chakra </td>
+                    <td><a href="https://maps.app.goo.gl/XbKCJURhTtWCXohx6">Google Map</a></td>
+                    <td>The Aura তন্মাত্র</td>
+
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>Tala Barowari Durgotsav</td>
+                    <td><a href="https://maps.app.goo.gl/7yb24r16kT4GEfME9">Google Map</a></td>
+                    <td>মধূসদন</td>
+
+                </tr>
+                <tr>
+                    <td>21</td>
+                    <td>HAZRA Park Durgotsav</td>
+                    <td><a href="https://maps.app.goo.gl/PfaBFeaeTdDenauu6">Google Map</a></td>
+                    <td>দৃষ্টিকোণ</td>
+
+                </tr>
+                <tr>
+                    <td>22</td>
+                    <td>Sovabajar Burotolla Sarbojanin Durgotsav Samity</td>
+                    <td><a href="https://maps.app.goo.gl/C2r8Sr8sxJXWC8Qd8">Google Map</a></td>
+                    <td>বয়ন</td>
+
+                </tr>
+                <tr>
+                    <td>23</td>
+                    <td>Jorasako 7er Palli</td>
+                    <td><a href="https://maps.app.goo.gl/aoEhhA16mqiYET4B6">Google Map</a></td>
+                    <td>পত্রেপল্লবী</td>
+
+                </tr>
+                <tr>
+                    <td>24</td>
+                    <td>Bidhan Sarani Atlas Club</td>
+                    <td><a href="https://maps.app.goo.gl/HRKt4h26AuoeVJ6f7">Google Map</a></td>
+                    <td>যোকায় কলিকাতা</td>
+
+                </tr>
+                <tr>
+                    <td>25</td>
+                    <td>Beliaghata 33no. Palii Bashi Brinda</td>
+                    <td><a href="https://maps.app.goo.gl/KbGP64pdiAp4sm9m6">Google Map</a></td>
+                    <td>তিন তিন শর্ত তিন</td>
+
+                </tr>
+                <tr>
+                    <td>26</td>
+                    <td>Friends Union- Puja Commitee Shyambazar</td>
+                    <td><a href="https://maps.app.goo.gl/mA4Z2ueXtL15K7Pp6">Google Map</a></td>
+                    <td>ডিগবাজির পর নতুন সাজে দুবাই এবার শ্যামবাজার এ</td>
+
+                </tr>
+                <tr>
+                    <td>27</td>
+                    <td>Beleghata Gandhimath</td>
+                    <td><a href="https://maps.app.goo.gl/LXLGj8G66pLFE5hG7">Google Map</a></td>
+                    <td>শিরোনাম</td>
+
+                </tr>
+                <tr>
+                    <td>28</td>
+                    <td>Bidhan Sarani Atlas Club</td>
+                    <td><a href="https://maps.app.goo.gl/HRKt4h26AuoeVJ6f7">Google Map</a></td>
+                    <td>যোকায় কলিকাতা</td>
+
+                </tr>
+                <tr>
+                    <td>29</td>
+                    <td>Chetla Sarbasadharaner Durgotsab</td>
+                    <td><a href="https://maps.app.goo.gl/reFGj4da3bpxTDR79">Google Map</a></td>
+                    <td>তরঙ্গ</td>
+
+                </tr>
+                <tr>
+                    <td>30</td>
+                    <td>Barisha Kumar Para Young's Club</td>
+                    <td><a href="https://maps.app.goo.gl/5LaTL4TCgwa43U177">Google Map</a></td>
+                    <td>বশির সুরে উমার ঘরে</td>
+
+                </tr>
+                <tr>
+                    <td>31</td>
+                    <td>Patuli Sarbojonin Durgotsav</td>
+                    <td><a href="https://maps.app.goo.gl/E7VJrHBxZmapnaAi6">Google Map</a></td>
+                    <td>নবপত্রিকাবাসিনী</td>
+
+                </tr>
+                <tr>
+                    <td>32</td>
+                    <td>Haridevpur 41pally Club</td>
+                    <td><a href="https://maps.app.goo.gl/inTNq1rYiZCT2Hd2A">Google Map</a></td>
+                    <td>সোপান</td>
+
+                </tr>
+                <tr>
+                    <td>33</td>
+                    <td>Pratapaditya Tricone Club</td>
+                    <td><a href="https://maps.app.goo.gl/uXisWrFdGme8uTr1A">Google Map</a></td>
+                    <td>দেবদর্শন</td>
+
+                </tr>
+                <tr>
+                    <td>34</td>
+                    <td>71 pally Sarbojanin Durgotsav Samity</td>
+                    <td><a href="https://maps.app.goo.gl/n31jX6oKwLKRk4ky9">Google Map</a></td>
+                    <td>গুপ্তধনের সন্ধানে</td>
+
+                </tr>
+                <tr>
+                    <td>35</td>
+                    <td>South Purbanchal Udayan Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/AGTawtvmmcwBRkUR9">Google Map</a></td>
+                    <td>চোখ থাকতে কানা</td>
+
+                </tr>
+                <tr>
+                    <td>36</td>
+                    <td>66 pally Sarbojanin Durgotsav Samity</td>
+                    <td><a href="https://maps.app.goo.gl/eGK8jkYyZzK8JCtN7">Google Map</a></td>
+                    <td>গুপ্তধনের সন্ধানে</td>
+
+                </tr>
+                <tr>
+                    <td>37</td>
+                    <td>78 pally Alipur Sarbojanin Durgotsav </td>
+                    <td><a href="https://maps.app.goo.gl/sjw6cDAtVx5NWHwf9">Google Map</a></td>
+                    <td>কাহিনী</td>
+
+                </tr>
+                <tr>
+                    <td>38</td>
+                    <td>Garagacha Sarbojonin Durgotsav</td>
+                    <td><a href="https://maps.app.goo.gl/iRDRSiKwA9XWTvHf6">Google Map</a></td>
+                    <td>পরম্পরা</td>
+
+                </tr>
+                <tr>
+                    <td>39</td>
+                    <td>Pally Unnayan Samity ,Pachchim Putiary</td>
+                    <td><a href="https://maps.app.goo.gl/H9CXyZTZkfBfnPca8">Google Map</a></td>
+                    <td>চারিকল্প</td>
+
+                </tr>
+                <tr>
+                    <td>40</td>
+                    <td>Kasba Renaissance Club</td>
+                    <td><a href="https://maps.app.goo.gl/kUdjt3tdWDa4Gkqg9">Google Map</a></td>
+                    <td>আনন্দধারা</td>
+
+                </tr>
+                <tr>
+                    <td>41</td>
+                    <td>Bhowanipur Shantidoot Club</td>
+                    <td><a href="https://maps.app.goo.gl/p8poddATh6vThmXv6">Google Map</a></td>
+                    <td>পাখিরালয়</td>
+
+                </tr>
+                <tr>
+                    <td>42</td>
+                    <td>Kendua Shanti Sangha Sarbojonin Durgotsab</td>
+                    <td><a href="https://maps.app.goo.gl/BeAYgDY9SXZYwrYL7">Google Map</a></td>
+                    <td>নিগূঢ়</td>
+
+                </tr>
+                <tr>
+                    <td>43</td>
+                    <td>Suruchi Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/wbp6ukkpoLuCCrrq8">Google Map</a></td>
+                    <td>আবৃতি</td>
+
+                </tr>
+                <tr>
+                    <td>44</td>
+                    <td>Dhakuria Sarbojonin Durgotsab</td>
+                    <td><a href="https://maps.app.goo.gl/P6ZSk5VqdVKUk7nr8">Google Map</a></td>
+                    <td>কাবুলিওয়ালা</td>
+
+                </tr>
+                <tr>
+                    <td>45</td>
+                    <td>Ajeya Sanghiti</td>
+                    <td><a href="https://maps.app.goo.gl/ELKL9uXpg9JGxPAQ8">Google Map</a></td>
+                    <td>সর্বংসহা</td>
+
+                </tr>
+                <tr>
+                    <td>46</td>
+                    <td>Kalighat Sree Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/W56K419HMW29P1Eg9">Google Map</a></td>
+                    <td>ফিরে দেখা শৈশব</td>
+
+                </tr>
+                <tr>
+                    <td>47</td>
+                    <td>Badamtala Asar Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/cUAtGiQX8gvTtsz29">Google Map</a></td>
+                    <td>আর্জি</td>
+
+                </tr>
+                <tr>
+                    <td>48</td>
+                    <td>Rajdanga Amra Kajan Kalyan Samity</td>
+                    <td><a href="https://maps.app.goo.gl/6skbQvQSX6P7wEFV8">Google Map</a></td>
+                    <td>রুদ্রাণী</td>
+
+                </tr>
+                <tr>
+                    <td>49</td>
+                    <td>Vidyasagar Central Sarbojonin Durgotsav</td>
+                    <td><a href="https://maps.app.goo.gl/vfUcoA5anAZZksYK7">Google Map</a></td>
+                    <td>কালো নীল বর্ণহীন</td>
+
+                </tr>
+                <tr>
+                    <td>51</td>
+                    <td>Mahamayatala East Milani</td>
+                    <td><a href="https://maps.app.goo.gl/wAq7g33yd8fEC5Xz8">Google Map</a></td>
+                    <td>লোক কৃষ্টি কলা কেন্দ্র</td>
+
+                </tr>
+                <tr>
+                    <td>52</td>
+                    <td>SB Park Sarbojonin</td>
+                    <td><a href="https://maps.app.goo.gl/dCHfdBbrLXya47Un8">Google Map</a></td>
+                    <td>প্রত্নকথা</td>
+
+                </tr>
+                <tr>
+                    <td>53</td>
+                    <td>Kalighat yuba maitry Durgotsab</td>
+                    <td><a href="https://maps.app.goo.gl/Z5wUsnpbPKz8RiUV9">Google Map</a></td>
+                    <td>বর্ধন(দুর্গা মা এর আপন দেশে উন্নয়ন সবুজ ঘেষে)</td>
+
+                </tr>
+                <tr>
+                    <td>54</td>
+                    <td>Forward Club(Kalighat)</td>
+                    <td><a href="https://maps.app.goo.gl/ZLuUphjY2E4MTdrbA">Google Map</a></td>
+                    <td>সমুদ্র মন্থন</td>
+
+                </tr>
+                <tr>
+                    <td>55</td>
+                    <td>Mukundapur Sarbojanin Durgotsab</td>
+                    <td><a href="https://maps.app.goo.gl/Ku8bSUn2Gs2rafJs8">Google Map</a></td>
+                    <td>দ্রোহ</td>
+
+                </tr>
+                <tr>
+                    <td>56</td>
+                    <td>Udayan Kidderpore</td>
+                    <td><a href="https://maps.app.goo.gl/J7XeBiE8buAULVfg9">Google Map</a></td>
+                    <td>সংকট</td>
+
+                </tr>
+                <tr>
+                    <td>57</td>
+                    <td>Naktala Pallymangal Samity</td>
+                    <td><a href="https://maps.app.goo.gl/uqkHNuzeao8GXQfn7">Google Map</a></td>
+                    <td>স্বপ্নের রাজবাড়ী</td>
+
+                </tr>
+                <tr>
+                    <td>58</td>
+                    <td>Chakraberia Sarbojanin</td>
+                    <td><a href="https://maps.app.goo.gl/dLF3zigJkKNaXmKP7">Google Map</a></td>
+                    <td>প্রথা</td>
+
+                </tr>
+                <tr>
+                    <td>59</td>
+                    <td>Ramkrishna Upanibesh Central Club</td>
+                    <td><a href="https://maps.app.goo.gl/Ut7zwtmjmFAEoLjh7">Google Map</a></td>
+                    <td>বাংলার কৃষ্টি</td>
+
+                </tr>
+                <tr>
+                    <td>60</td>
+                    <td>Nandana Yuba Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/EYHUWRRbQZA1ixXj6">Google Map</a></td>
+                    <td>ঘরামীর ঘর ভাঙা</td>
+
+                </tr>
+                <tr>
+                    <td>61</td>
+                    <td>Barisha Players Corner Club</td>
+                    <td><a href="https://maps.app.goo.gl/1dZrVYQMGCDRgLA99">Google Map</a></td>
+                    <td>আভিজাত্যের অঙ্গীকার</td>
+
+                </tr>
+                <tr>
+                    <td>62</td>
+                    <td>Baghajatin Tarun Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/VUZ7zWGnXDoxsdy67">Google Map</a></td>
+                    <td>রঙ্গাবরণ</td>
+
+                </tr>
+                <tr>
+                    <td>63</td>
+                    <td>Tarun Matri Sevak Samity</td>
+                    <td><a href="https://maps.app.goo.gl/RE8eqj1nMQr6G169A">Google Map</a></td>
+                    <td>হে অতীত কথা কও</td>
+
+                </tr>
+                <tr>
+                    <td>64</td>
+                    <td>Bosepukur Talbagan Sarbojanin</td>
+                    <td><a href="https://maps.app.goo.gl/n3AbRwMD4h4PS6Xq9">Google Map</a></td>
+                    <td>পরিত্রাণ</td>
+
+                </tr>
+                <tr>
+                    <td>65</td>
+                    <td>Ramkrishna Nagar Boy's Club</td>
+                    <td><a href="https://maps.app.goo.gl/8q48FEcZFmRzydS58">Google Map</a></td>
+                    <td>শুধুই নয় রূপকথা শোনো আমাদের চুপকথা</td>
+
+                </tr>
+                <tr>
+                    <td>66</td>
+                    <td>Vivekananda Sporting Club Haridevpur</td>
+                    <td><a href="https://maps.app.goo.gl/WXS69W55ytFciU4B6">Google Map</a></td>
+                    <td>TANABANA</td>
+
+                </tr>
+                <tr>
+                    <td>67</td>
+                    <td>Putiary Club</td>
+                    <td><a href="https://maps.app.goo.gl/DJkLfCJA4vTYpE1z5">Google Map</a></td>
+                    <td>দায়বদ্ধ</td>
+
+                </tr>
+                <tr>
+                    <td>68</td>
+                    <td>76 pally Sarbojanin Durga Utsav</td>
+                    <td><a href="https://maps.app.goo.gl/AgxbYzG4TdXxE5Gq6">Google Map</a></td>
+                    <td>স্বস্তিক</td>
+
+                </tr>
+                <tr>
+                    <td>69</td>
+                    <td>Hazra Udayan Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/autHNTWrb7jw2Djm9">Google Map</a></td>
+                    <td>কালচিত্র</td>
+
+                </tr>
+                <tr>
+                    <td>70</td>
+                    <td>Naktala Pally Unnayan Samity</td>
+                    <td><a href="https://maps.app.goo.gl/fQTb1g3w3iDSVK8Q8">Google Map</a></td>
+                    <td>আঁচল</td>
+
+                </tr>
+                <tr>
+                    <td>71</td>
+                    <td>Dhakuria Saraswat Sammilani</td>
+                    <td><a href="https://maps.app.goo.gl/mxN1yTjqQGQ1g3Ku7">Google Map</a></td>
+                    <td>ধরহর</td>
+
+                </tr>
+                <tr>
+                    <td>72</td>
+                    <td>Lake Gardens Cultural Fans Association</td>
+                    <td><a href="https://maps.app.goo.gl/i3apZupuDi5ySrpk8">Google Map</a></td>
+                    <td>তুমি সতেরও মা অসতেরও মা</td>
+
+                </tr>
+                <tr>
+                    <td>73</td>
+                    <td>Paddapukur Youth Association</td>
+                    <td><a href="https://maps.app.goo.gl/XhUf6hgTXih2fz7R6">Google Map</a></td>
+                    <td>জলছবি</td>
+
+                </tr>
+                <tr>
+                    <td>74</td>
+                    <td>Bakul Bagan Sarbojanin</td>
+                    <td><a href="https://maps.app.goo.gl/TQsK2tq6yqKEizxK9">Google Map</a></td>
+                    <td>বিশ্ব</td>
+
+                </tr>
+                <tr>
+                    <td>75</td>
+                    <td>Bhwanipur 75 Pally</td>
+                    <td><a href="https://maps.app.goo.gl/gncFHxTaE7g5PAXP8">Google Map</a></td>
+                    <td>বিনোদিনী</td>
+
+                </tr>
+                <tr>
+                    <td>76</td>
+                    <td>Turf Road Pallymangal Durgotsab</td>
+                    <td><a href="https://maps.app.goo.gl/RNwE5424HgzvkeWm7">Google Map</a></td>
+                    <td>রাজবাড়ী বিশে সাদা কালো মিশে</td>
+
+                </tr>
+                <tr>
+                    <td>77</td>
+                    <td>Kalighat Nepal Bhattacharjee street club</td>
+                    <td><a href="https://maps.app.goo.gl/bEPArmHzVYL7gEHw6">Google Map</a></td>
+                    <td>মা রাজেশ্বরি</td>
+
+                </tr>
+                <tr>
+                    <td>78</td>
+                    <td>Behala Young Mens Association</td>
+                    <td><a href="https://maps.app.goo.gl/NTKX6NoEUx7anXXc8">Google Map</a></td>
+                    <td>প্রতি কৃতি</td>
+
+                </tr>
+                <tr>
+                    <td>79</td>
+                    <td>74 Pally Club Khidderpore</td>
+                    <td><a href="https://maps.app.goo.gl/2eUvHq6WeJ8hp1qs9">Google Map</a></td>
+                    <td>অকালের কলকাতা</td>
+
+                </tr>
+                <tr>
+                    <td>80</td>
+                    <td>Santoshpur Avenue South</td>
+                    <td><a href="https://maps.app.goo.gl/zt25gqeHv1zk3sdu5">Google Map</a></td>
+                    <td>সমষ্টি ( The core identity of life)</td>
+
+                </tr>
+                <tr>
+                    <td>81</td>
+                    <td>Shyama Pally Shyama Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/UZMcW9xoV9ut6QYv7">Google Map</a></td>
+                    <td>ভেদ</td>
+
+                </tr>
+                <tr>
+                    <td>82</td>
+                    <td>Nandi Bagan Durga Puja</td>
+                    <td><a href="https://maps.app.goo.gl/YKsHoPQG9Ejif93U8">Google Map</a></td>
+                    <td>কুরুক্ষেত্র</td>
+
+                </tr>
+                <tr>
+                    <td>83</td>
+                    <td>75 Pally Khidderpore</td>
+                    <td><a href="https://maps.app.goo.gl/FryjumczMcVQnVAdA">Google Map</a></td>
+                    <td>স্বর্গ বাণিজ্য</td>
+
+                </tr>
+                <tr>
+                    <td>84</td>
+                    <td>Bhawanipur 70 pally welfare association</td>
+                    <td><a href="https://maps.app.goo.gl/tDBvXBJMNRyvAG7A9">Google Map</a></td>
+                    <td>ছুটি</td>
+
+                </tr>
+                <tr>
+                    <td>85</td>
+                    <td>Kolahal Gosthi Club</td>
+                    <td><a href="https://maps.app.goo.gl/gyJU1XfE6rD8VFLa8">Google Map</a></td>
+                    <td>সোনাঝুড়ির ছায়ায় মা</td>
+
+                </tr>
+                <tr>
+                    <td>86</td>
+                    <td>Ballygunge 21 Pally</td>
+                    <td><a href="https://maps.app.goo.gl/59DyNTYTQFM3EtnG9">Google Map</a></td>
+                    <td>আঁচল অনন্ত</td>
+
+                </tr>
+                <tr>
+                    <td>87</td>
+                    <td>Madhya Bidhan Pally </td>
+                    <td><a href="https://maps.app.goo.gl/NPT9YHB7zY1wuZiF7">Google Map</a></td>
+                    <td>যাত্রা পথে বিধান মতে</td>
+
+                </tr>
+                <tr>
+                    <td>88</td>
+                    <td>Dhakuria Friends & Associates</td>
+                    <td><a href="https://maps.app.goo.gl/VSAp1nQT8fo9HiwY7">Google Map</a></td>
+                    <td>ওরা কাজ করে</td>
+
+                </tr>
+                <tr>
+                    <td>89</td>
+                    <td>Shakuntala Park Netaji Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/nhquFoU5fLzUtAQ5A">Google Map</a></td>
+                    <td>উড়ন্ত</td>
+
+                </tr>
+                <tr>
+                    <td>90</td>
+                    <td>sonali park sports and cultural society</td>
+                    <td><a href="https://maps.app.goo.gl/DFYFNsnHAoujwKjW8">Google Map</a></td>
+                    <td>ঘরে বাইরে</td>
+
+                </tr>
+                <tr>
+                    <td>91</td>
+                    <td>Mudiali Club</td>
+                    <td><a href="https://maps.app.goo.gl/ri8jzDs75WVPXwk48">Google Map</a></td>
+                    <td>আত্মশুদ্ধি</td>
+
+                </tr>
+                <tr>
+                    <td>92</td>
+                    <td>Jagritee Durga Puja,Bhowanipore</td>
+                    <td><a href="https://maps.app.goo.gl/keutebSqd5ZBK1cz9">Google Map</a></td>
+                    <td>বিলীন</td>
+
+                </tr>
+                <tr>
+                    <td>93</td>
+                    <td>Jadavpur Athletic Club</td>
+                    <td><a href="https://maps.app.goo.gl/iiPjmsS3EZRLxymL6">Google Map</a></td>
+                    <td>একাত্ব</td>
+
+                </tr>
+                <tr>
+                    <td>94</td>
+                    <td>Kalighat Kishore Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/2tcFSin1MoCyBG328">Google Map</a></td>
+                    <td>উৎসব</td>
+
+                </tr>
+                <tr>
+                    <td>95</td>
+                    <td>Behala 29 Pally </td>
+                    <td><a href="https://maps.app.goo.gl/fXqP8dBkp6n6GWiw5">Google Map</a></td>
+                    <td>মোক্ষপট</td>
+
+                </tr>
+                <tr>
+                    <td>96</td>
+                    <td>New Santoshpur Sarbojanin Durgotsab</td>
+                    <td><a href="https://maps.app.goo.gl/SvunL9SMZ1QXk4oA7">Google Map</a></td>
+                    <td>মা তেই মুক্তি</td>
+
+                </tr>
+                <tr>
+                    <td>97</td>
+                    <td> Purbanchal Shakti Sangha Club</td>
+                    <td><a href="https://maps.app.goo.gl/6eKhkL9CKELiS4Cz9">Google Map</a></td>
+                    <td>মাঠখোদাই কাঠখোদাই</td>
+
+                </tr>
+                <tr>
+                    <td>98</td>
+                    <td> Hatibagan NabinPally</td>
+                    <td><a href="https://maps.app.goo.gl/j3SLAcWz1HxUfymd7">Google Map</a></td>
+                    <td>আমার দেশ আমার দুর্গা</td>
+
+                </tr>
+                <tr>
+                    <td>99</td>
+                    <td> Chorebagan Sarbojanin </td>
+                    <td><a href="https://maps.app.goo.gl/ajKp4wigbRUUWABw6">Google Map</a></td>
+                    <td>স্রোতস্বিনী</td>
+
+                </tr>
+                <tr>
+                    <td>100</td>
+                    <td> Simla Byayam Samity</td>
+                    <td><a href="https://maps.app.goo.gl/1LKKMiLDmvuF7cjH8">Google Map</a></td>
+                    <td>সদেশিয়ানার বিপ্লবতীর্থ</td>
+
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>Kabiraj Bagan Sarbojonin</td>
+                    <td><a href="https://maps.app.goo.gl/CbgrdxHXNbbQw78N7">Google Map</a></td>
+                    <td>জগন্নাথ ধাম (Digha)</td>
+
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td> Jorasanko Sadharan Durgotsav Samity</td>
+                    <td><a href="https://maps.app.goo.gl/8MU26TsjokEtJVGg7">Google Map</a></td>
+                    <td>প্রবাহিনী</td>
+
+                </tr>
+                <tr>
+                    <td>103</td>
+                    <td>Aswininagar Bandhumahal Club</td>
+                    <td><a href="https://maps.app.goo.gl/wcrdknAABzenJVDr6">Google Map</a></td>
+                    <td>বাংলা ও বাঙালি</td>
+
+                </tr>
+                <tr>
+                    <td>104</td>
+                    <td> Golaghata Sammelani Club</td>
+                    <td><a href="https://maps.app.goo.gl/6eFJ2X6KhwUpcxMN9">Google Map</a></td>
+                    <td>ব্রেক ফেল</td>
+
+                </tr>
+                <tr>
+                    <td>105</td>
+                    <td> Kankurgachi Chalantika Durgotsav</td>
+                    <td><a href="https://maps.app.goo.gl/h6n6sexuTqpXybxB6">Google Map</a></td>
+                    <td>টিক টিকি</td>
+
+                </tr>
+                <tr>
+                    <td>106</td>
+                    <td> Taltala Doctor Lanestha Sarbojanin</td>
+                    <td><a href="https://maps.app.goo.gl/V2cwSJqXAEDXG52Z7">Google Map</a></td>
+                    <td>ঠাকুরঘরের গপ্পো</td>
+
+                </tr>
+                <tr>
+                    <td>107</td>
+                    <td>Duttabagan Durgotsov Committee</td>
+                    <td><a href="https://maps.app.goo.gl/XtTkL8djTXN6tUSY9">Google Map</a></td>
+                    <td>বাহন</td>
+
+                </tr>
+                <tr>
+                    <td>108</td>
+                    <td>Park Circus Beniapukur United Puja Committee</td>
+                    <td><a href="https://maps.app.goo.gl/R23CxDfSVwUrcGTc9">Google Map</a></td>
+                    <td>pura taman saraswati temple</td>
+
+                </tr>
+                <tr>
+                    <td>109</td>
+                    <td> Natunpally Pradeep Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/C5rneD2rdJ7gG9yC6">Google Map</a></td>
+                    <td>অমরত্ব</td>
+
+                </tr>
+                <tr>
+                    <td>110</td>
+                    <td>Charer Palli Sarbojonin</td>
+                    <td><a href="https://maps.app.goo.gl/cWDF9DqomwC7vL1R7">Google Map</a></td>
+                    <td>দ্রাবিড় উৎকল বঙ্গ</td>
+
+                </tr>
+                <tr>
+                    <td>111</td>
+                    <td>Chaltabagan Sarbojanin</td>
+                    <td><a href="https://maps.app.goo.gl/1GmDPiMYK6qTVUEu8">Google Map</a></td>
+                    <td>আমি বাংলায় বলছি</td>
+
+                </tr>
+                <tr>
+                    <td>112</td>
+                    <td>Chaltabagan Loha patty</td>
+                    <td><a href="https://maps.app.goo.gl/ep9UftuyWM2go5Ro9">Google Map</a></td>
+                    <td>মূল</td>
+
+                </tr>
+                <tr>
+                    <td>113</td>
+                    <td>Entally Kanthal Bagan Sarbojanin</td>
+                    <td><a href="https://maps.app.goo.gl/LCz6jF1qkTUjV8aeA">Google Map</a></td>
+                    <td>রাজনন্দিনী</td>
+
+                </tr>
+                <tr>
+                    <td>114</td>
+                    <td>Kankurgachi Jubak Brinda</td>
+                    <td><a href="https://maps.app.goo.gl/qjRufLFcYiUQzwn59">Google Map</a></td>
+                    <td>উৎসবে উৎসব</td>
+
+                </tr>
+                <tr>
+                    <td>115</td>
+                    <td>Aurobrinda Setu Sarbojanin</td>
+                    <td><a href="https://maps.app.goo.gl/YyvMSMp1NtQmMkWY8">Google Map</a></td>
+                    <td>নয় অপচয়</td>
+
+                </tr>
+                <tr>
+                    <td>116</td>
+                    <td>Lalabagan Nabankur</td>
+                    <td><a href="https://maps.app.goo.gl/CMmj28aPDDx45b9E9">Google Map</a></td>
+                    <td>কারাগার</td>
+
+                </tr>
+                <tr>
+                    <td>117</td>
+                    <td>Shyambazar Palli Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/ZGRR8w5Y2qDLGRgj9">Google Map</a></td>
+                    <td>আবেশ</td>
+
+                </tr>
+                <tr>
+                    <td>118</td>
+                    <td>Baghbazar PalliPuja O Pradarshani</td>
+                    <td><a href="https://maps.app.goo.gl/XPR7Zq5KFEUQhY6V8">Google Map</a></td>
+                    <td>চিত্র কথা</td>
+
+                </tr>
+                <tr>
+                    <td>119</td>
+                    <td>Mitali Sangha Kankurgachi</td>
+                    <td><a href="https://maps.app.goo.gl/JMp97vTNW7ezuvu47">Google Map</a></td>
+                    <td>সখের বাজার</td>
+
+                </tr>
+                <tr>
+                    <td>120</td>
+                    <td>Sura Sporting Club</td>
+                    <td><a href="https://maps.app.goo.gl/Tcvp6omyxFBtzejt9">Google Map</a></td>
+                    <td>ঋতুগর্ভা</td>
+
+                </tr>
+                <tr>
+                    <td>121</td>
+                    <td>AB Block Abasik Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/T5RJmeAHN6R2DEiBA">Google Map</a></td>
+                    <td>ইচ্ছে</td>
+
+                </tr>
+                <tr>
+                    <td>122</td>
+                    <td>Beleghata Sandhani Club</td>
+                    <td><a href="https://maps.app.goo.gl/vG3am2Ee92HEPhEc9">Google Map</a></td>
+                    <td>পড়শী</td>
+
+                </tr>
+                <tr>
+                    <td>123</td>
+                    <td>Belgachia Sadharon Durgotsav</td>
+                    <td><a href="https://maps.app.goo.gl/kcD5MqE31jkHZ67P9">Google Map</a></td>
+                    <td>অস্তিত্ব</td>
+
+                </tr>
+                <tr>
+                    <td>124</td>
+                    <td>Kashi Bose Lane Durga Puja</td>
+                    <td><a href="https://maps.app.goo.gl/fcvLBiFuvQuScN2g8">Google Map</a></td>
+                    <td>পাক দন্তি</td>
+
+                </tr>
+                <tr>
+                    <td>125</td>
+                    <td>Jora Bagan Tapan Smriti Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/HeEJ7jCYJxjEpY6w6">Google Map</a></td>
+                    <td>এসো রথ টানি আসবে ভবানী</td>
+
+                </tr>
+                <tr>
+                    <td>126</td>
+                    <td>Simulia Sarvojanin Durgotsav Samity</td>
+                    <td><a href="https://maps.app.goo.gl/k4G9sxNUMafrNQQ96">Google Map</a></td>
+                    <td>নারী তুমি অনন্যা</td>
+
+                </tr>
+                <tr>
+                    <td>127</td>
+                    <td>Ahiritola Sarbojonin Durgotsab</td>
+                    <td><a href="https://maps.app.goo.gl/3S1cezUYzpM9jmmMA">Google Map</a></td>
+                    <td>প্রবাহ</td>
+
+                </tr>
+                <tr>
+                    <td>128</td>
+                    <td>Ashutosh Dey Lane Tarun Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/LhNMnmvFjRra48Lv9">Google Map</a></td>
+                    <td>অধ্যায়</td>
+
+                </tr>
+                <tr>
+                    <td>129</td>
+                    <td>Ultadanga Daspara Sarbajanin</td>
+                    <td><a href="https://maps.app.goo.gl/eA8j1oGLUgHt7Gvo9">Google Map</a></td>
+                    <td>বিবর্তন</td>
+
+                </tr>
+                <tr>
+                    <td>130</td>
+                    <td>Sarkar Bagan Sammilita Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/yH65Qt4cuNXn5pxd6">Google Map</a></td>
+                    <td>চারু কথা</td>
+
+                </tr>
+                <tr>
+                    <td>131</td>
+                    <td>47 Pally Jubakbrinda</td>
+                    <td><a href="https://maps.app.goo.gl/rG1yaJTeNCBd5dPr8">Google Map</a></td>
+                    <td>দশাবতার</td>
+
+                </tr>
+                <tr>
+                    <td>132</td>
+                    <td>Wellington Nagarik Kalyan Samity</td>
+                    <td><a href="https://maps.app.goo.gl/yk5bXcRPdxnH9eRE6">Google Map</a></td>
+                    <td>আলোর উৎস</td>
+
+                </tr>
+                <tr>
+                    <td>133</td>
+                    <td>AG Block Durga Puja</td>
+                    <td><a href="https://maps.app.goo.gl/zSmn9dEsAS7vnoMWA">Google Map</a></td>
+                    <td>তাণ্ডব</td>
+
+                </tr>
+                <tr>
+                    <td>134</td>
+                    <td>Hatibagan Sarbojonin</td>
+                    <td><a href="https://maps.app.goo.gl/EY4QbPSAfBQoYR4q9">Google Map</a></td>
+                    <td>অথ ঘাট কথা</td>
+
+                </tr>
+                <tr>
+                    <td>135</td>
+                    <td>Railpukur United club</td>
+                    <td><a href="https://maps.app.goo.gl/ZthZBqJuktgD9vUw7">Google Map</a></td>
+                    <td>শব্দ</td>
+
+                </tr>
+                <tr>
+                    <td>136</td>
+                    <td>Tala Barowari Durga Puja</td>
+                    <td><a href="https://maps.app.goo.gl/mK2nV9FetKqsyfTi8">Google Map</a></td>
+                    <td>মধুসদন</td>
+
+                </tr>
+                <tr>
+                    <td>137</td>
+                    <td>Shastri Bagan Sporting Club</td>
+                    <td><a href="https://maps.app.goo.gl/hDVefVdJC4ydWuKP7">Google Map</a></td>
+                    <td>অনুভূতি</td>
+
+                </tr>
+                <tr>
+                    <td>138</td>
+                    <td>Bandhudal Sporting Club</td>
+                    <td><a href="https://maps.app.goo.gl/v6yMJR3YokY91fwr6">Google Map</a></td>
+                    <td>কালীসুতাপুর</td>
+
+                </tr>
+                <tr>
+                    <td>139</td>
+                    <td>Tarapukur Adi Sarbajanin a</td>
+                    <td><a href="https://maps.app.goo.gl/UHoNVHX1ggvnWDkd6">Google Map</a></td>
+                    <td>কুম্ভ</td>
+
+                </tr>
+                <tr>
+                    <td>140</td>
+                    <td>Forward Sporting Club </td>
+                    <td><a href="https://maps.app.goo.gl/1uzggFPCnpHYWcP97">Google Map</a></td>
+                    <td>রাঙা মাটির দেশে</td>
+
+                </tr>
+                <tr>
+                    <td>141</td>
+                    <td>Purba Panihati Sarbojanin Durgotsab</td>
+                    <td><a href="https://maps.app.goo.gl/Ece2aZZq1UVXuyG48">Google Map</a></td>
+                    <td>সহজপাঠ</td>
+
+                </tr>
+                <tr>
+                    <td>142</td>
+                    <td>Panshila Thakur bari</td>
+                    <td><a href="https://maps.app.goo.gl/PyD37D1Nt63JwxaU9">Google Map</a></td>
+                    <td>শ্রীচরণেশু</td>
+
+                </tr>
+                <tr>
+                    <td>143</td>
+                    <td>Sodepur Sahid Colony</td>
+                    <td><a href="https://maps.app.goo.gl/TMBhxj9zaZtmpBkv5">Google Map</a></td>
+                    <td>চারধাম</td>
+
+                </tr>
+                <tr>
+                    <td>144</td>
+                    <td>Athpur Boys Sporting Club</td>
+                    <td><a href="https://maps.app.goo.gl/UzZmFssdUHKP4x259">Google Map</a></td>
+                    <td>শুষ্ক বৃক্ষের কথা</td>
+
+                </tr>
+                <tr>
+                    <td>145</td>
+                    <td>Garifa Yuba Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/1uzggFPCnpHYWcP97">Google Map</a></td>
+                    <td>রাঙা মাটির দেশে</td>
+
+                </tr>
+                <tr>
+                    <td>146</td>
+                    <td>Bhatpara Barowari Durga Puja Samity</td>
+                    <td><a href="https://maps.app.goo.gl/YdH1g636Zpubuucv7">Google Map</a></td>
+                    <td>স্বর্ণ প্রাসাদ</td>
+
+                </tr>
+                <tr>
+                    <td>147</td>
+                    <td>Ichhapur anandamath Boys Club </td>
+                    <td><a href="https://maps.app.goo.gl/XnUdDcyS8CDvZNt86">Google Map</a></td>
+                    <td>সম্পর্ক</td>
+
+                </tr>
+                <tr>
+                    <td>148</td>
+                    <td>Kalyani A-8 Durgotsab</td>
+                    <td><a href="https://maps.app.goo.gl/XgMTVByauEghonT69">Google Map</a></td>
+                    <td>Arunachal Pradesh Golden Pagoda</td>
+
+                </tr>
+                <tr>
+                    <td>149</td>
+                    <td>Sonarpur Recreation Club</td>
+                    <td><a href="https://maps.app.goo.gl/KhmyBEznpB7FYEL89">Google Map</a></td>
+                    <td>হংস বালিকা</td>
+
+                </tr>
+                <tr>
+                    <td>150</td>
+                    <td>Budge Budge Sanghasree Club</td>
+                    <td><a href="https://maps.app.goo.gl/HFmUCofjBrDwkKDw7">Google Map</a></td>
+                    <td>মহাকালের অন্তরালে</td>
+
+                </tr>
+                <tr>
+                    <td>151</td>
+                    <td>Baruipur Bhai Bhai Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/1oWVmvQD4Y3kVGKU6">Google Map</a></td>
+                    <td>পার্বণের বারো তেরো</td>
+
+                </tr>
+                <tr>
+                    <td>152</td>
+                    <td>Kodalia Netaji Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/AYeM3se7A6heeagp6">Google Map</a></td>
+                    <td>বিমুর্ত</td>
+
+                </tr>
+                <tr>
+                    <td>153</td>
+                    <td>Narendrapur Greenpark Sarbojonin Durgotsob</td>
+                    <td><a href="https://maps.app.goo.gl/DyBd8k4xUfaZ2YRU8">Google Map</a></td>
+                    <td>পুজোর চালচিত্র</td>
+
+                </tr>
+                <tr>
+                    <td>154</td>
+                    <td>Madhya Shibpur Bandhu mahal Club</td>
+                    <td><a href="https://maps.app.goo.gl/G1F2m2Pt7FrFn1qeA">Google Map</a></td>
+                    <td>রাশি রহস্য</td>
+
+                </tr>
+                <tr>
+                    <td>155</td>
+                    <td>Sitala Maitri Sangha Club</td>
+                    <td><a href="https://maps.app.goo.gl/eJW9h9DdrsW6C1PE7">Google Map</a></td>
+                    <td>চিত্তশুদ্ধি</td>
+
+                </tr>
+                <tr>
+                    <td>156</td>
+                    <td>Howrah Tarun Samity</td>
+                    <td><a href="https://maps.app.goo.gl/NiAT3nuSYUqKP91y5">Google Map</a></td>
+                    <td>ঋতুমতী লজ্জা ৯ সৃষ্টি</td>
+
+                </tr>
+                <tr>
+                    <td>157</td>
+                    <td>Chatterjeehat Sangam Club</td>
+                    <td><a href="https://maps.app.goo.gl/17wkx5tzq2Djpq2K9">Google Map</a></td>
+                    <td>হাওড়ার রাজরানী</td>
+
+                </tr>
+                <tr>
+                    <td>158</td>
+                    <td>Shibpur Sastitala Baroary</td>
+                    <td><a href="https://maps.app.goo.gl/4N1rFvkXpCHC9hmA8">Google Map</a></td>
+                    <td>উদযাপন</td>
+
+                </tr>
+                <tr>
+                    <td>159</td>
+                    <td>Balitikuri Netaji Balak Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/ZsydXupTy2ThnNXs7">Google Map</a></td>
+                    <td>স্বপ্ন লোক</td>
+
+                </tr>
+                <tr>
+                    <td>160</td>
+                    <td>Bandhani bayam samiti</td>
+                    <td><a href="https://maps.app.goo.gl/5N4iCc4HfF7gNSRe8">Google Map</a></td>
+                    <td>আদর্শ গ্রন্থাগার</td>
+
+                </tr>
+                <tr>
+                    <td>161</td>
+                    <td>Madhusudan Das Lane And Bye Lane Sarbojaneen Durgotsab</td>
+                    <td><a href="https://maps.app.goo.gl/8SiAL8v6RErrzKhs7">Google Map</a></td>
+                    <td>বাংলা ভাষা হোক চিরন্তন</td>
+
+                </tr>
+                <tr>
+                    <td>162</td>
+                    <td>ICHAPUR BAYAM SAMITY</td>
+                    <td><a href="https://maps.app.goo.gl/hn3HmUnGKdWmNJFz7">Google Map</a></td>
+                    <td>নীলকন্ঠ</td>
+
+                </tr>
+                <tr>
+                    <td>163</td>
+                    <td>Khirertala Baroari Bayam Samiti</td>
+                    <td><a href="https://maps.app.goo.gl/iBq12bzt2nBoF2uY7">Google Map</a></td>
+                    <td>মুক্তি</td>
+
+                </tr>
+                <tr>
+                    <td>164</td>
+                    <td>BATORE SARBOJONIN DURGATSAV SAMITY</td>
+                    <td><a href="https://maps.app.goo.gl/3GjHYgdpvwfTdYUB7">Google Map</a></td>
+                    <td>আবর্তন</td>
+
+                </tr>
+                <tr>
+                    <td>165</td>
+                    <td>Kamardanga Sitalatala Barowari Durga pujo</td>
+                    <td><a href="https://maps.app.goo.gl/K8icUrKU2ng9L6iA8">Google Map</a></td>
+                    <td>চতুষ্কোণ</td>
+
+                </tr>
+                <tr>
+                    <td>166</td>
+                    <td>Chandrabati Dakshin Pally Sadharan Durgotsab Samiti </td>
+                    <td><a href="https://maps.app.goo.gl/PHVjNGExa6H1F1ud9">Google Map</a></td>
+                    <td>অরন্যক</td>
+
+                </tr>
+                <tr>
+                    <td>167</td>
+                    <td>Haldarpara Friends Association</td>
+                    <td><a href="https://maps.app.goo.gl/GZVWMX6b25VGFrP27">Google Map</a></td>
+                    <td>অবারিত</td>
+
+                </tr>
+                <tr>
+                    <td>168</td>
+                    <td>Santragachi Kalpataru Sporting Club</td>
+                    <td><a href="https://maps.app.goo.gl/vx3r5hKCt4zDgC6X9">Google Map</a></td>
+                    <td>অনন্ত সৃষ্টি</td>
+
+                </tr>
+                <tr>
+                    <td>169</td>
+                    <td>Howrah Anushilan Samity</td>
+                    <td><a href="https://maps.app.goo.gl/ZTFsDcJipzxdNRP89">Google Map</a></td>
+                    <td>মহলতা</td>
+
+                </tr>
+                <tr>
+                    <td>170</td>
+                    <td>Bantra Nabin Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/K1saAV2n4YG8Kei88">Google Map</a></td>
+                    <td>প্রেম ময়ী</td>
+
+                </tr>
+                <tr>
+                    <td>171</td>
+                    <td>Ramrajatala Pallymangal samity</td>
+                    <td><a href="https://maps.app.goo.gl/iZqYUcx99QNFYAPAA">Google Map</a></td>
+                    <td>মাটির টানে</td>
+
+                </tr>
+                <tr>
+                    <td>172</td>
+                    <td>Subol Smriti Sangha</td>
+                    <td><a href="https://maps.app.goo.gl/5Mqh6trBMYL42Bte9">Google Map</a></td>
+                    <td>লোকশিল্পে দুর্গা</td>
+
+                </tr>
+                <tr>
+                    <td>173</td>
+                    <td>Olabibitala Sarbojonin Durgotsav</td>
+                    <td><a href="https://maps.app.goo.gl/A3BnD8YKKYFxRnFe6">Google Map</a></td>
+                    <td>এক টুকরো আন্দামান</td>
+
+                </tr>
+                <tr>
+                    <td>174</td>
+                    <td>Salkia Chatra Bayam Samity</td>
+                    <td><a href="https://maps.app.goo.gl/1KLp4VKy3rjav9GP7">Google Map</a></td>
+                    <td>নির্মাণ</td>
+
+                </tr>
+                <tr>
+                    <td>175</td>
+                    <td>Babulbona Durga Puja Committee</td>
+                    <td><a href="https://maps.app.goo.gl/erwGbP2qqLcUQELL9">Google Map</a></td>
+                    <td>গুজরাটের হাওয়া মহল</td>
+
+                </tr>
+                <tr>
+                    <td>176</td>
+                    <td>Serampore 8 - er Palli Club</td>
+                    <td><a href="https://maps.app.goo.gl/Vj2mqjZts7qCXopr6">Google Map</a></td>
+                    <td>অন্তরায়ে অন্তজ্ঞান</td>
+
+                </tr>
+                <tr>
+                    <td>177</td>
+                    <td>Satghara Natun Dal</td>
+                    <td><a href="https://maps.app.goo.gl/UE331PJ5BbxWKkjc9">Google Map</a></td>
+                    <td>দুবাই সিটি</td>
+
+                </tr>
+                <tr>
+                    <td>178</td>
+                    <td>Azad Hind Club Chuchurah</td>
+                    <td><a href="https://maps.app.goo.gl/LQaU6MiCSW4bQMk58">Google Map</a></td>
+                    <td>সিন্ধু মাতার মহেঞ্জোদারো</td>
+
+                </tr>
+                <tr>
+                    <td>179</td>
+                    <td>Panchanantala Sarbojonin Durgatsob Samity Chinsurah</td>
+                    <td><a href="https://maps.app.goo.gl/V65yy5bA6WjZr8RL6">Google Map</a></td>
+                    <td>নীড় ছোট ক্ষতি তো নেই আকাশ তো বড়</td>
+
+                </tr>
+                <tr>
+                    <td>180</td>
+                    <td>Karbala More Vivekananda Road Sarbojanin,Chinsurah</td>
+                    <td><a href="https://maps.app.goo.gl/H6xh4jFmDxPRptnm8">Google Map</a></td>
+                    <td>পুরী</td>
+
+                </tr>
+                <tr>
+                    <td>181</td>
+                    <td>Nayalankar Thakurpara Durga puja committee,Bhatpara</td>
+                    <td><a href="https://maps.app.goo.gl/Z63BThyReKoPn3GfA">Google Map</a></td>
+                    <td>ধ্বংসপুরীতে সৃষ্টির উপাখ্যান</td>
+
+                </tr>
+                <tr>
+                    <td>182</td>
+                    <td>Sheoraphuli Boys Athelatic Club</td>
+                    <td><a href="https://maps.app.goo.gl/6ToL7bVet4sdsh8TA">Google Map</a></td>
+                    <td>THAILAND</td>
+
+                </tr>
+                <tr>
+                    <td>183</td>
+                    <td>Taldanga Nine Star Club</td>
+                    <td><a href="https://maps.app.goo.gl/KCH4KaS6V5tAZNJv8">Google Map</a></td>
+                    <td>সময়</td>
+
+                </tr>
+                <tr>
+                    <td>184</td>
+                    <td>Subhas Colony Durga Puja,Barrackpore</td>
+                    <td><a href="https://maps.app.goo.gl/Yg5WjUuqtFQWFc229">Google Map</a></td>
+                    <td>পিঞ্জরে প্রাণ ও মুক্তির গান</td>
+
+                </tr>
+                <tr>
+                    <td>185</td>
+                    <td>Barrackpore Hindi School Field,Barrackpore Chiriamore</td>
+                    <td><a href="https://maps.app.goo.gl/kNip1o5abxdJvCPw8">Google Map</a></td>
+                    <td>বিশ্বের বৃহত্তম লন্ডনের ন্যাচারাল হিস্ট্রি মিউজিয়াম</td>
+
+                </tr>
+                <tr>
+                    <td>186</td>
+                    <td>Barrackpore Youth Club</td>
+                    <td><a href="https://maps.app.goo.gl/W6vafgBjdg2YquFp9">Google Map</a></td>
+                    <td>রাজমহলের রাজরানি</td>
+
+                </tr>
+                <tr>
+                    <td>187</td>
+                    <td>Roy Bagan Vivekananda Sangha,Barrackpore</td>
+                    <td><a href="https://maps.app.goo.gl/bJ2VbLTwJMe2RDtr5">Google Map</a></td>
+                    <td>অগ্রগতি</td>
+
+                </tr>
+                <tr>
+                    <td>188</td>
+                    <td>Shibtala Baroari Math,Barrackpore</td>
+                    <td><a href="https://maps.app.goo.gl/iKJH3w5iSVnCaHCw9">Google Map</a></td>
+                    <td>বৌদ্ধ মন্দির</td>
+
+                </tr>
+                <tr>
+                    <td>189</td>
+                    <td>Royal Park Cultural Welfare Association,Barrackpore</td>
+                    <td><a href="https://maps.app.goo.gl/hHMozwF23MyuCzyW8">Google Map</a></td>
+                    <td>Royal park - এ রং বাজি!</td>
+
+                </tr>
+                <tr>
+                    <td>190</td>
+                    <td>Anandapuri Sarbajanin Durgatsob,Barrackpore</td>
+                    <td><a href="https://maps.app.goo.gl/ZHxXGDbze9bGnkZ3A">Google Map</a></td>
+                    <td>চেতনা</td>
+
+                </tr>
+                <tr>
+                    <td>191</td>
+                    <td>Evergreen Sporting Club,Barrackpore</td>
+                    <td><a href="https://maps.app.goo.gl/fw55aogf2bkbi8Pd6">Google Map</a></td>
+                    <td>অন্তর দর্পন</td>
+
+                </tr>
+                <tr>
+                    <td>192</td>
+                    <td>Madhya Nona Chandan Pukur Durgotsav,Barrackpore</td>
+                    <td><a href="https://maps.app.goo.gl/1VY5vqpo8kXGuF5P8">Google Map</a></td>
+                    <td>তিরুপতির পথে</td>
+
+                </tr>
+                <tr>
+                    <td>193</td>
+                    <td>Pranabananda Pally Sarbojonin Durgotsav,Bankura</td>
+                    <td><a href="https://maps.app.goo.gl/2DbrxmQcL2imNjCu9">Google Map</a></td>
+                    <td>উত্তর প্রদেশের বারসানার রাধারাণীর মন্দির</td>
+
+                </tr>
+                <tr>
+                    <td>194</td>
+                    <td>Rajdanga Naba Uday Sangha,Kolkata</td>
+                    <td><a href="https://maps.app.goo.gl/BQkY6SsLWqHumi639">Google Map</a></td>
+                    <td>প্রশ্ন</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <!-- Logo + Description -->
+            <div class="footer-logo">
+                <h2>🌼 DurgaPuja.com</h2>
+                <p>Your ultimate guide to Kolkata's most magnificent Durga Puja celebrations.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="most visit.html">Most visit</a></li>
+                    <li><a href="ranking pandals.html">Ranking Pandals</a></li>
+                    <li><a href="Pujo zone.html">Pujo Zone</a></li>
+                    <li><a href="Thank you.html">Contribution</a></li>
+                </ul>
+            </div>
+
+            <!-- Categories -->
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="north kolkata pujo.html">North Kolkata</a></li>
+                    <li><a href="south kolkata pujo.html">South Koklkata</a></li>
+                    <li><a href="pandel guide.html">pandel Guide</a></li>
+                    <li><a href="north kollkata pandel guide.html">North Kolkata Pandel Guide</a></li>
+                    <li><a href="south kolkata pandel guide.html">South Kolkata Pandel Guide</a></li>
+                    <li><a href="kalyani pandel guide.html">Kalyani Pandel Guide</a></li>
+                    <li><a href="Local area pandel guide.html">Local Area Pandel Guide</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>📍 Barrackpore Chiriamore, near Subhas sangha club, Stalin Nagar, Barrackpur
+                    Cantonment,<br>Barrackpore, West Bengal 700120</p>
+                <p>📞 +91 7605887990</p>
+                <p>✉️ barrackporeacademyofit2014@gmail.com</p>
+                <div class="footer-brand-logos">
+                    <a href="https://www.google.com/search?gs_ssp=eJzj4tVP1zc0zI3PKiswtog3YLRSNagwtkyzsEwysTAytDBJTLEwtjKoSDFKtkgxSzU3MbJMMzAyMvQSSErMLFFISiwqSkzOLsgvSgUA2SoVJg&q=bait+barrackpore&oq=&gs_lcrp=EgZjaHJvbWUqDwgBEC4YJxivARjHARjqAjIJCAAQIxgnGOoCMg8IARAuGCcYrwEYxwEY6gIyCQgCECMYJxjqAjIJCAMQIxgnGOoCMgkIBBAjGCcY6gIyCQgFECMYJxjqAjIJCAYQIxgnGOoCMgkIBxAjGCcY6gLSAQg4OTZqMGoxNagCCLACAfEFGlLkDkcmBak&sourceid=chrome&ie=UTF-8"
+                        class="logo">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="22" height="22">
+                            <path fill="#EA4335"
+                                d="M24 9.5c3.94 0 6.62 1.7 8.14 3.12l5.94-5.94C34.2 3.5 29.56 1.5 24 1.5 14.66 1.5 6.68 7.64 3.24 16.02l6.93 5.38C12 14.18 17.46 9.5 24 9.5z" />
+                            <path fill="#4285F4"
+                                d="M46.5 24.5c0-1.6-.14-3.1-.39-4.5H24v9h12.72c-.54 2.92-2.16 5.4-4.58 7.08l7.12 5.52c4.17-3.85 7.24-9.54 7.24-17.1z" />
+                            <path fill="#FBBC05"
+                                d="M10.17 28.4A14.5 14.5 0 0 1 9.5 24c0-1.5.26-2.94.72-4.27l-6.93-5.38A22.41 22.41 0 0 0 1.5 24c0 3.58.86 6.96 2.37 9.95l6.3-5.55z" />
+                            <path fill="#34A853"
+                                d="M24 46.5c6.48 0 11.91-2.14 15.88-5.8l-7.12-5.52c-2.02 1.36-4.6 2.2-8.76 2.2-6.54 0-12-4.68-13.83-10.95l-6.3 5.55C6.68 40.36 14.66 46.5 24 46.5z" />
+                        </svg></a>
+                    <a href="https://www.facebook.com/p/Barrackpore-Academy-Of-Information-Technology-100064156025237/?wtsid=rdr_0RHLuC3pg3F4Vsea7#"
+                        class="logo">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="22" height="22">
+                            <path fill="#1877F2"
+                                d="M24 1.5C11.85 1.5 2 11.35 2 23.5c0 10.9 8.03 19.9 18.5 21.75V30.25h-5.6V23.5h5.6v-5.1c0-5.6 3.35-8.65 8.45-8.65 2.45 0 4.55.18 5.15.26v5.96h-3.55c-2.8 0-3.35 1.33-3.35 3.28v4.26h6.7l-1.05 6.75h-5.65v15c10.5-1.85 18.55-10.85 18.55-21.75 0-12.15-9.85-22-22-22z" />
+                        </svg></a>
+                    <a href="https://www.instagram.com/bait_barrackpore_2014?utm_source=ig_web_button_share_sheet&igsh=MTAwMWhsM3Npa2Q0eg=="
+                        class="logo">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="22" height="22">
+                            <radialGradient id="insta" cx="19" cy="42" r="44" gradientUnits="userSpaceOnUse">
+                                <stop offset="0" stop-color="#fd5" />
+                                <stop offset=".5" stop-color="#ff543e" />
+                                <stop offset="1" stop-color="#c837ab" />
+                            </radialGradient>
+                            <path fill="url(#insta)"
+                                d="M34.5 4h-21A9.5 9.5 0 0 0 4 13.5v21A9.5 9.5 0 0 0 13.5 44h21A9.5 9.5 0 0 0 44 34.5v-21A9.5 9.5 0 0 0 34.5 4zM24 35a11 11 0 1 1 0-22 11 11 0 0 1 0 22zm11.5-19.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2z" />
+                            <circle cx="24" cy="24" r="6.5" fill="#fff" />
+                        </svg></a>
+                    <a href="https://youtube.com/@baitbarrackpore344?si=lgsrYt7EVAQZatrS" class="logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="22" height="22">
+                            <path fill="#FF0000"
+                                d="M43.5 14.5s-.4-3.1-1.6-4.4c-1.5-1.6-3.3-1.6-4.1-1.7C32.1 8 24 8 24 8h-.1s-8.1 0-13.8.4c-.8.1-2.6.1-4.1 1.7-1.2 1.3-1.6 4.4-1.6 4.4S4 17.8 4 21v6c0 3.2.4 6.5.4 6.5s.4 3.1 1.6 4.4c1.5 1.6 3.5 1.6 4.4 1.8 3.2.3 13.6.4 13.6.4s8.1 0 13.8-.4c.8-.1 2.6-.1 4.1-1.7 1.2-1.3 1.6-4.4 1.6-4.4s.4-3.3.4-6.5v-6c0-3.2-.4-6.5-.4-6.5z" />
+                            <path fill="#fff" d="M19 31.5v-15l12 7.5-12 7.5z" />
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Bottom -->
+        <div class="footer-bottom">
+            © 2025 DurgaPuja.com. All rights reserved. | Celebrating Bengali Culture & Heritage
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
